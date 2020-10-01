@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">	
+		<style>
+			td{
+				height: 20px;
+				width: 40px;
+			}
+			table{
+				text-align: center;
+				font-size: 15px;
+			}
+			form{
+				text-align: center;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			function doadd(){
+				var tr=document.createElement("tr");
+				for(var i=0;i<4;i++){
+					var td=document.createElement("td");
+					switch(i){
+					case 0:
+						var name=document.getElementById("name").value;
+						td.innerHTML=name;
+						tr.appendChild(td);
+						break;
+					case 1:
+						var male=document.getElementById("male");
+						var female=document.getElementById("female");
+						if(male.checked){
+							td.innerHTML="male";
+							tr.appendChild(td);
+						}
+						if(female.checked){
+							td.innerHTML="female";
+							tr.appendChild(td);
+						}
+						break;
+					case 2:
+						var age=document.getElementById("age").value;
+						td.innerHTML=age;
+						tr.appendChild(td);
+						break;
+					case 3:
+						var email=document.getElementById("email").value;
+						td.innerHTML=email;
+						tr.appendChild(td);
+						break;
+					}
+				}
+				var tb=document.getElementById("tb")
+				tb.appendChild(tr);
+			}
+			function dohremove(){
+				var tb=document.getElementById("tb");
+				var trs=tb.getElementsByTagName("tr");
+				tb.removeChild(trs[0]);
+				
+			}
+			function dofremove(){
+				var tb=document.getElementById("tb");
+				var trs=tb.getElementsByTagName("tr");
+				tb.removeChild(trs[trs.length-1]);
+			}
+			
+			
+		</script>
+		<title>练习</title>
+	</head>
+	<body>
+   <table width="600px" height="100px" border="1px" align="center"id="table">
+	   <thead>
+		   <th>Name</td>
+		   <th>Sex</td>
+		   <th>Age</td>
+		   <th>邮箱</td>
+	   </thead>
+	   <tbody id="tb">
+	   <tr>
+		   <td>xiaoli</td>
+		   <td>Male</td>
+		   <td>22</td>
+		   <td>563369@sina.com</td>
+	   </tr>
+	   <tr>
+		   <td>xiaohong</td>
+		   <td>Female</td>
+		   <td>16</td>
+		   <td>6669945@qq.com</td>
+	   </tr>
+	   <tr>
+		   <td>xiaohua</td>
+		   <td>Female</td>
+		   <td>18</td>
+		   <td>5adaw5511@qq.com</td>
+	   </tr>
+	   </tbody>
+	   <tfoot>
+		   <td colspan="4">
+		  <input type="button" value="从首行删除" onclick="dohremove()" />
+		  <input type="button" value="从末行删除" onclick="dofremove()" />
+		   </td>
+	   </tfoot>
+   </table>
+   <p align="center">请输入您的信息:</p>
+   <form >
+	<label>姓名：</label><input type="text" id="name"/>
+	<br />
+	<label for="sex">性别：</label>
+	<input type="radio" name="sex" checked="checked" id="male"/><label>Male</label> 
+	<input type="radio" name="sex" id="female" /><label>Female</label>
+	<br />
+	<label>年龄：</label><input type="number" id="age"/>
+	<br />
+	<label>地址：</label><input type="email" id="email" />
+	<br />
+	<input type="button" value="提交" onclick="doadd()" />
+	<input type="reset" value="重置" onclick="doreset()" />
+	</form>
+	</body>
+</html>
